@@ -18,7 +18,7 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'email' => 'admin@thejanitraders.com',
-                'password' => Hash::make('password'), // Change this in production
+                'password' => Hash::make('admin123'), // Change this in production
                 'phone' => '0771234567',
                 'role' => 'admin',
             ]
