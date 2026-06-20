@@ -11,5 +11,10 @@ class Supplier extends Model
         'contactno',
         'address',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'supplier_id');
+    }
 }
 
