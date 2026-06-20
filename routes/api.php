@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SupplierInvoiceController;
+use App\Http\Controllers\BatchStockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,4 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Supplier Invoice Management
     Route::apiResource('supplier-invoices', SupplierInvoiceController::class);
+
+    // Batch Stock Management
+    Route::apiResource('batch-stocks', BatchStockController::class);
 });
