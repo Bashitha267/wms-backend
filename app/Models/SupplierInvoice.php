@@ -18,4 +18,9 @@ class SupplierInvoice extends Model
     {
         return $this->belongsTo(Supplier::class);
     }
+
+    public function batchStocks()
+    {
+        return $this->hasMany(BatchStock::class, 'supplier_invoice_id');
+    }
 }
