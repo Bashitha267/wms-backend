@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SupplierInvoiceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,4 +28,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Product Management
     Route::apiResource('products', ProductController::class);
+
+    // Supplier Invoice Management
+    Route::apiResource('supplier-invoices', SupplierInvoiceController::class);
 });
