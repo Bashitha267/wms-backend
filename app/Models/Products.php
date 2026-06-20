@@ -16,4 +16,9 @@ class Products extends Model
     {
         return $this->belongsTo(Supplier::class, 'supplier_id');
     }
+
+    public function batchStocks()
+    {
+        return $this->hasMany(BatchStock::class, 'product_id');
+    }
 }
