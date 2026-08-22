@@ -24,6 +24,12 @@ class AuthController extends Controller
             ]);
         }
 
+        if (! in_array($user->role, ['admin', 'staff'])) {
+            throw ValidationException::withMessages([
+                'username' => ['Access restricted. Only Admin and Staff accounts are currently permitted.'],
+            ]);
+        }
+
         $token = $user->createToken('auth-token')->plainTextToken;
 
         return response()->json([
