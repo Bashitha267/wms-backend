@@ -12,7 +12,12 @@ class Shop extends Model
         'shop_name',
         'address',
         'phoneno',
-        'route_no',
+        'route_id',
     ];
+
+    public function route()
+    {
+        return $this->belongsTo(Route::class);
+    }
 }
 
