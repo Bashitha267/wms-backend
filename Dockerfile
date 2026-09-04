@@ -25,7 +25,9 @@ RUN npm run build
 FROM php:8.4-cli-bookworm
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends libonig-dev \
+    && apt-get install -y --no-install-recommends ca-certificates libonig-dev \
+    && cp docker/aiven-ca.pem /usr/local/share/ca-certificates/aiven-ca.crt \
+    && update-ca-certificates \
     && docker-php-ext-install pdo_mysql mbstring bcmath \
     && rm -rf /var/lib/apt/lists/*
 
