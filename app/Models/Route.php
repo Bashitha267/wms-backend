@@ -10,4 +10,9 @@ class Route extends Model
         'route_id',
         'route_name',
     ];
+
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
 }

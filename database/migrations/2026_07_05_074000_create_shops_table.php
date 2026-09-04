@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('shop_name');
             $table->string('address')->nullable();
             $table->string('phoneno')->nullable();
-            $table->unsignedBigInteger('route_no');
-            $table->foreign('route_code')->references('route_code')->on('routes')->onDelete('cascade');
+            $table->foreignId('route_id')->constrained('routes')->cascadeOnDelete();
         });
     }
 
