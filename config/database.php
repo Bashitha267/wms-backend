@@ -60,8 +60,8 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                Mysql::ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-                Mysql::ATTR_SSL_VERIFY_SERVER_CERT => env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT', false),
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA', file_exists('/usr/local/share/ca-certificates/aiven-ca.crt') ? '/usr/local/share/ca-certificates/aiven-ca.crt' : (file_exists(base_path('docker/aiven-ca.pem')) ? base_path('docker/aiven-ca.pem') : null)),
+                PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => env('MYSQL_ATTR_SSL_VERIFY_SERVER_CERT', false),
             ], static fn ($value) => $value !== null && $value !== '') : [],
         ],
 
