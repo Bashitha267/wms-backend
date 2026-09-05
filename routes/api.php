@@ -8,7 +8,34 @@ use App\Http\Controllers\SupplierInvoiceController;
 use App\Http\Controllers\BatchStockController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
+// Health and DB check
+Route::get('/ping', function () {
+    try {
+        DB::connection()->getPdo();
+        return response()->json([
+            'status' => 'ok',
+            'message' => 'pong',
+            'database' => [
+                'connected' => true,
+                'name' => DB::connection()->getDatabaseName(),
+            ],
+            'timestamp' => now()->toIso8601String(),
+        ], 200);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'pong',
+            'database' => [
+                'connected' => false,
+                'error' => $e->getMessage(),
+            ],
+            'timestamp' => now()->toIso8601String(),
+        ], 500);
+    }
+});
 
 // Public routes
 Route::post('/login', [AuthController::class, 'login']);
